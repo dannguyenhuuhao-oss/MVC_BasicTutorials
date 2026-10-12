@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MVC_BasicTutorials.Models.Student>
+@*Loại: Razor (Khai báo kiểu Model)*@
+@{
+    //Loại: Razor(Khối lệnh C#)
+    ViewBag.Title = "Index";
+   
+}
+@*Loại: HTML thuần (Tạo tiêu đề)*@
+<h2>Danh sách sinh viên</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")@*Loại: HTML Helper(Sinh thẻ liên kết)*@
+</p>
+@*Loại: HTML thuần (Tạo bảng)*@
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.StudentName)</th>
+        @*Loại: HTML Helper(Hiển thị tên thuộc tính)*@
+        <th>@Html.DisplayNameFor(model => model.Age)</th>
+        <th></th>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Action</th>
+    </tr>
+
+    @*Loại: Razor (Vòng lặp C#)*@
+    @foreach (var item in Model)
+    {  /* Loại: HTML thuần (Tạo bảng)*/
+        <tr>
+            @*Loại: HTML thuần (Tạo bảng)*@
+            <td>@Html.DisplayFor(modelItem => item.StudentName)</td>
+            @*Loại: HTML Helper(Hiển thị dữ liệu Model)*@
+            <td>@Html.DisplayFor(modelItem => item.Age)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit",@*Loại: HTML Helper(Sinh thẻ liên kết)*@
+new { id = item.StudentId }) |
+                @Html.ActionLink("Details", "Details",
+                    new { id = item.StudentId }) |
+                @Html.ActionLink("Delete", "Delete",
+                    new { id = item.StudentId })
+            </td>
+        </tr>
+    }
+</table>

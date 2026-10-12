@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Razor Syntax Demo";
+}
+
+@* 1. Inline expression *@
+<h1>Razor syntax demo</h1>
+<h2>@DateTime.Now.ToShortDateString()</h2>
+
+@* 2. Multi-statement code block *@
+@{
+    DateTime date = DateTime.Now;
+    string message = "Hello World";
+}
+
+<h2>Today's date is: @date.ToShortDateString()</h2>
+<h3>@message</h3>
+
+@* 3. Display text from code block *@
+@{
+    @:Today's date is: @date.ToShortDateString()
+
+
+    <text>
+        <br />
+        @message
+    </text>
+}
+
+@* 4. If-else: kiểm tra năm nhuận *@
+@{
+    int year = DateTime.Now.Year;
+
+    if (DateTime.IsLeapYear(year))
+    {
+        <p>@year is a leap year.</p>
+    }
+    else
+    {
+        <p>@year is not a leap year.</p>
+    }
+}
+
+@* 5. Loop: in số từ 0 đến 4 *@
+@for (int i = 0; i < 5; i++)
+{
+    @i
+    <br />
+}
+
+@* 6. Declare variables *@
+@{
+    string str = "";
+
+    if (1 > 0)
+    {
+        str = "Hello World!";
+    }
+}
+
+<p>@str</p>
+
+@* 7. Chuyển sang trang Detail *@
+<p>
+    @Html.ActionLink("View Student Detail", "Detail", "Razor")
+</p>

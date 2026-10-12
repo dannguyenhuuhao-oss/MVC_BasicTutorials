@@ -1,0 +1,18 @@
+﻿
+@model MVC_BasicTutorials.Models.Student
+
+@{
+    ViewBag.Title = "Student Detail";
+}
+
+<h2>Student Detail</h2>
+
+<ul>
+    <li>Student Id: @Model.StudentId</li>
+    <li>Student Name: @Model.StudentName</li>
+    <li>Age: @Model.Age</li>
+</ul>
+
+<p>
+    @Html.ActionLink("Back", "Index", "Razor")
+</p>
